@@ -29,6 +29,7 @@ If using Windows, open a Linux terminal (requires Windows Subsystem for Linux).
 ## Utility scripts
 
 delete-nodes.sh - Script to delete the multipass VMs
+
 stop-molecule-nodes.sh - Script to stop Boomi atom process on each node
 
 ## Notes:
