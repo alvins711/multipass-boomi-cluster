@@ -1,5 +1,21 @@
 #!/bin/bash
 
+###################################################################
+#Script Name    :  2-create-nodes.sh
+#Description    :  Creates multipass instances and sets up NFS mounts to NFS server
+#Args           :  1 parameter - number of nodes to create
+#Author         :  Alvin Salalila
+#Email          :
+###################################################################
+
+
+# check if running script in windows or linux, then set command alias
+if [ `uname -a | grep -iq microsoft` ]; then
+   MP=multipass
+else
+   MP=multipass.exe
+fi
+
 # Check arguments and display usage if arg is missing
 if [ "$#" -ne 1 ]; then
         _self="${0##*/}"
@@ -15,17 +31,10 @@ CPUS=1
 MEM=1G
 DISK=5G
 
-# check if running script in windows or linux, then set command alias
-if [ `uname -a | grep -iq microsoft` ]; then
-   MP=multipass
-else
-   MP=multipass.exe
-fi
-
 # Set node names as node1, node2 etc.
 NODES=$(eval echo node{1..${NUM_NODES}})
 
-NFSSVR=`$MP list |grep nfsserver | awk '{print $3}'`
+NFSSVR=`$MP list |grep nfssvr | awk '{print $3}'`
 echo "NFS server IP is: $NFSSVR"
 
 # Create multipass instances
