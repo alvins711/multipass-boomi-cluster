@@ -21,10 +21,15 @@ Collection of bash scripts to create a local Boomi molecule using Multipass virt
 If using Windows, open a Linux terminal (requires Windows Subsystem for Linux).
 
  The deploy.sh script will execute the following scripts in the following order:
+ 
 	1-create-nfs-server.sh - Creates a multipass VM for the NFS server
+	
 	2-create-nodes.sh - Creates multipass VMs as nodes for the cluster (number of nodes  are configurable)
+	
 	3-install-boomi-molecule.sh - Installs the Boomi Molecule software on NFS server
+	
 	4-start-molecule-nodes.sh - Start Boomi atoms on each node
+	
 
 ## Utility scripts
 
