@@ -11,9 +11,9 @@
 
 # check if running script in windows or linux, then set command alias
 if [ `uname -a | grep -iq microsoft` ]; then
-   MP=multipass
-else
    MP=multipass.exe
+else
+   MP=multipass
 fi
 
 # Check arguments and display usage if arg is missing
@@ -40,7 +40,7 @@ echo "NFS server IP is: $NFSSVR"
 # Create multipass instances
 for NODE in ${NODES}; do 
 	# multipass launch --name <node name> --cpus <cpu count> --mem <memory size> --disk <disk size> 
-	$MP launch --name ${NODE} --cpus $CPUS --mem $MEM --disk $DISK
+	$MP launch --name ${NODE} --cpus $CPUS --memory $MEM --disk $DISK
 	$MP exec $NODE -- bash -c 'sudo apt install nfs-common -y'
 	$MP exec $NODE -- bash -c 'sudo mkdir -p ~/boomi/share'
 	$MP exec $NODE -- bash -c "sudo mount $NFSSVR:/home/ubuntu/boomi/share  ~/boomi/share"

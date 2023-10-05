@@ -11,9 +11,9 @@
 
 # check if running script in windows or linux, then set command alias
 if [ `uname -a | grep -iq microsoft` ]; then
-   MP=multipass
-else
    MP=multipass.exe
+else
+   MP=multipass
 fi
 
 # Check arguments and display usage if arg is missing
@@ -33,5 +33,6 @@ NFSNODE=nfssvr
 
 $MP exec $NFSNODE -- bash -c 'wget https://platform.boomi.com/atom/molecule_install64.sh'
 $MP exec $NFSNODE -- bash -c 'sudo chmod 755 ~/molecule_install64.sh'
-$MP exec $NFSNODE -- bash -c "./molecule_install64.sh -q -console -VatomName=$MOLECULENAME -VinstallToken=$SECTOKEN -dir ~/boomi/share"
+#$MP exec $NFSNODE -- bash -c "./molecule_install64.sh -q -console -VatomName=$MOLECULENAME -VinstallToken=$SECTOKEN -dir ~/boomi/share"
+$MP exec $NFSNODE -- bash -c "./molecule_install64.sh -q -c -VatomName=$MOLECULENAME -VinstallToken=$SECTOKEN -dir ~/boomi/share"
 

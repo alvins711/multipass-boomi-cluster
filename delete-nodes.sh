@@ -3,9 +3,9 @@
 
 # check if running script in windows or linux, then set command alias
 if [ `uname -a | grep -iq microsoft` ]; then
-	   MP=multipass
-   else
 	   MP=multipass.exe
+   else
+	   MP=multipass
 fi
 
 # Get list of node names, note this will delete all multipass instances

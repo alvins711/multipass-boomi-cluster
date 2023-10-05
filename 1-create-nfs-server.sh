@@ -11,9 +11,9 @@
 
 # check if running script in windows or linux, then set command alias
 if [ `uname -a | grep -iq microsoft` ]; then
-   MP=multipass
-else
    MP=multipass.exe
+else
+   MP=multipass
 fi
 
 # set cpu, memory and disk sizes for virtual machine nodes
@@ -24,7 +24,7 @@ DISK=5G
 
 # Create multipass instance for master (nfs server)
 # multipass launch --name <node name> --cpus <cpu count> --mem <memory size> --disk <disk size> 
-$MP launch --name nfssvr --cpus $CPUS --mem $MEM --disk $DISK
+$MP launch --name nfssvr --cpus $CPUS --memory $MEM --disk $DISK
 
 $MP exec nfssvr -- bash -c 'sudo apt install nfs-kernel-server -y'
 $MP exec nfssvr -- bash -c 'mkdir -p ~/boomi/share'

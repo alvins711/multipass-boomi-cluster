@@ -11,9 +11,9 @@
 
 # check if running script in windows or linux, then set command alias
 if [ `uname -a | grep -iq microsoft` ]; then
-   MP=multipass
-else
    MP=multipass.exe
+else
+   MP=multipass
 fi
 
 # Set node names as node1, node2 etc.
